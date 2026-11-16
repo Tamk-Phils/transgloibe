@@ -66,3 +66,15 @@ export interface ChatMessage {
     content: string;
     created_at: string;
 }
+
+export interface WhatsAppSettings {
+    enabled: boolean;
+    phoneNumber: string;
+    displayLabel?: string;
+    message?: string;
+    showFloating?: boolean;
+    showHeader?: boolean;
+    showContactPage?: boolean;
+    showFooter?: boolean;
+    updatedAt?: string;
+}

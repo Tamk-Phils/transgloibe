@@ -21,11 +21,11 @@ if (typeof window !== 'undefined') {
 const originIcon = typeof window !== 'undefined' ? L.divIcon({
     html: `
         <div class="relative flex items-center justify-center">
-            <div class="w-8 h-8 bg-emerald-500/20 rounded-full animate-ping absolute"></div>
-            <div class="w-7 h-7 bg-emerald-600 text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white font-black text-[10px]">
+            <div class="w-8 h-8 bg-blue-500/20 rounded-full animate-ping absolute"></div>
+            <div class="w-7 h-7 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg border-2 border-white font-black text-[10px]">
                 A
             </div>
-            <div class="absolute -bottom-8 bg-slate-900 text-emerald-400 text-[9px] font-black px-2 py-0.5 rounded shadow-md whitespace-nowrap uppercase tracking-wider border border-emerald-500/30">
+            <div class="absolute -bottom-8 bg-slate-900 text-sky-400 text-[9px] font-black px-2 py-0.5 rounded shadow-md whitespace-nowrap uppercase tracking-wider border border-blue-500/30">
                 START
             </div>
         </div>
@@ -57,12 +57,12 @@ const destinationIcon = typeof window !== 'undefined' ? L.divIcon({
 const movingTruckIcon = typeof window !== 'undefined' ? L.divIcon({
     html: `
         <div class="relative flex items-center justify-center">
-            <div class="absolute w-12 h-12 bg-emerald-500/30 rounded-full animate-ping"></div>
-            <div class="relative w-10 h-10 bg-emerald-600 text-white border-2 border-white rounded-full flex items-center justify-center shadow-2xl text-lg">
+            <div class="absolute w-12 h-12 bg-blue-500/30 rounded-full animate-ping"></div>
+            <div class="relative w-10 h-10 bg-blue-600 text-white border-2 border-white rounded-full flex items-center justify-center shadow-2xl text-lg">
                 🚚
             </div>
-            <div class="absolute -top-9 bg-slate-900 text-emerald-400 text-[9px] font-black px-2.5 py-1 rounded shadow-xl whitespace-nowrap uppercase tracking-widest border border-emerald-500/40 flex items-center gap-1">
-                <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
+            <div class="absolute -top-9 bg-slate-900 text-sky-400 text-[9px] font-black px-2.5 py-1 rounded shadow-xl whitespace-nowrap uppercase tracking-widest border border-blue-500/40 flex items-center gap-1">
+                <span class="w-1.5 h-1.5 bg-sky-400 rounded-full animate-pulse"></span>
                 LIVE PACKAGE
             </div>
         </div>
@@ -373,7 +373,7 @@ export default function LiveMap({
     if (!isMounted) {
         return (
             <div className="w-full h-full bg-slate-900 rounded-2xl flex flex-col items-center justify-center text-white gap-3 p-6 text-center border border-slate-800">
-                <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+                <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
                 <p className="text-xs text-slate-400 font-mono">INITIALIZING SATELLITE RADAR...</p>
             </div>
         );
@@ -391,27 +391,27 @@ export default function LiveMap({
             {isFullscreen ? (
                 <header className="bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between text-white shrink-0 shadow-2xl z-[1000] gap-4">
                     <div className="flex items-center gap-3 min-w-0">
-                        <div className="w-9 h-9 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-sky-400 shrink-0">
                             <Navigation size={18} className="transform rotate-45 animate-pulse" />
                         </div>
                         <div className="min-w-0">
                             <div className="flex items-center gap-2">
-                                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
+                                <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping shrink-0" />
                                 <h2 className="text-xs sm:text-sm font-black tracking-tight uppercase truncate text-white">
-                                    Transworld Logistics Satellite Radar
+                                    Transglobe Logistics Satellite Radar
                                 </h2>
                                 {trackingNumber && (
-                                    <span className="hidden md:inline px-2 py-0.5 rounded-md bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 font-mono text-[11px] font-bold">
+                                    <span className="hidden md:inline px-2 py-0.5 rounded-md bg-blue-950/80 border border-blue-500/40 text-sky-300 font-mono text-[11px] font-bold">
                                         {trackingNumber}
                                     </span>
                                 )}
                             </div>
                             <p className="text-[10px] sm:text-xs text-slate-400 font-medium truncate flex items-center gap-2">
                                 <span>{originName || "Origin"}</span>
-                                <span className="text-emerald-400 font-bold">➔</span>
+                                <span className="text-sky-400 font-bold">➔</span>
                                 <span>{destinationName || "Destination"}</span>
                                 {status && (
-                                    <span className="text-emerald-400 font-bold">• {status}</span>
+                                    <span className="text-sky-400 font-bold">• {status}</span>
                                 )}
                             </p>
                         </div>
@@ -423,7 +423,7 @@ export default function LiveMap({
                             onClick={() => setViewMode('package')}
                             className={`px-3 py-1.5 sm:py-2 rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md border cursor-pointer ${
                                 viewMode === 'package' 
-                                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-900/40' 
+                                    ? 'bg-blue-600 text-white border-blue-500 shadow-blue-900/40' 
                                     : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-white'
                             }`}
                             title="Focus on package"
@@ -437,7 +437,7 @@ export default function LiveMap({
                             onClick={() => setViewMode('route')}
                             className={`px-3 py-1.5 sm:py-2 rounded-xl text-xs font-black uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md border cursor-pointer ${
                                 viewMode === 'route' 
-                                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-900/40' 
+                                    ? 'bg-blue-600 text-white border-blue-500 shadow-blue-900/40' 
                                     : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700 hover:text-white'
                             }`}
                             title="Show entire route"
@@ -462,9 +462,9 @@ export default function LiveMap({
                 /* INLINE VIEW TOP BAR */
                 <div className="absolute top-2.5 left-2.5 right-2.5 sm:top-3 sm:left-3 sm:right-3 z-[450] flex items-center justify-between gap-2 pointer-events-none">
                     <div className="bg-slate-900/90 backdrop-blur-md px-2.5 sm:px-3 py-1.5 rounded-xl text-white flex items-center gap-2 border border-white/10 shadow-lg pointer-events-auto shrink min-w-0">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+                        <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse shrink-0" />
                         <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider truncate">
-                            <span className="hidden sm:inline">TRANSWORLD </span>SATELLITE GPS
+                            <span className="hidden sm:inline">TRANSGLOBE </span>SATELLITE GPS
                         </span>
                     </div>
 
@@ -474,7 +474,7 @@ export default function LiveMap({
                             onClick={() => setViewMode('package')}
                             className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md backdrop-blur-md border cursor-pointer ${
                                 viewMode === 'package' 
-                                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-900/30' 
+                                    ? 'bg-blue-600 text-white border-blue-500 shadow-blue-900/30' 
                                     : 'bg-slate-900/80 text-slate-300 border-white/10 hover:bg-slate-900 hover:text-white'
                             }`}
                             title="Focus on package"
@@ -489,7 +489,7 @@ export default function LiveMap({
                             onClick={() => setViewMode('route')}
                             className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md backdrop-blur-md border cursor-pointer ${
                                 viewMode === 'route' 
-                                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-900/30' 
+                                    ? 'bg-blue-600 text-white border-blue-500 shadow-blue-900/30' 
                                     : 'bg-slate-900/80 text-slate-300 border-white/10 hover:bg-slate-900 hover:text-white'
                             }`}
                             title="Show full route"
@@ -502,7 +502,7 @@ export default function LiveMap({
                         <button
                             type="button"
                             onClick={toggleFullscreen}
-                            className="p-1.5 sm:p-2 rounded-xl bg-slate-900/80 text-slate-300 border border-white/10 hover:bg-emerald-600 hover:text-white hover:border-emerald-500 transition-all shadow-md backdrop-blur-md cursor-pointer shrink-0"
+                            className="p-1.5 sm:p-2 rounded-xl bg-slate-900/80 text-slate-300 border border-white/10 hover:bg-blue-600 hover:text-white hover:border-blue-500 transition-all shadow-md backdrop-blur-md cursor-pointer shrink-0"
                             title="Toggle Fullscreen"
                         >
                             <Maximize2 size={15} />
@@ -519,7 +519,7 @@ export default function LiveMap({
                         e.stopPropagation();
                         mapRef.current?.zoomIn();
                     }}
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-slate-900/90 hover:bg-emerald-600 text-white rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-md transition-all shadow-xl cursor-pointer"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-slate-900/90 hover:bg-blue-600 text-white rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-md transition-all shadow-xl cursor-pointer"
                     title="Zoom In"
                     aria-label="Zoom in"
                 >
@@ -531,7 +531,7 @@ export default function LiveMap({
                         e.stopPropagation();
                         mapRef.current?.zoomOut();
                     }}
-                    className="w-8 h-8 sm:w-9 sm:h-9 bg-slate-900/90 hover:bg-emerald-600 text-white rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-md transition-all shadow-xl cursor-pointer"
+                    className="w-8 h-8 sm:w-9 sm:h-9 bg-slate-900/90 hover:bg-blue-600 text-white rounded-xl flex items-center justify-center border border-white/10 backdrop-blur-md transition-all shadow-xl cursor-pointer"
                     title="Zoom Out"
                     aria-label="Zoom out"
                 >
@@ -560,7 +560,7 @@ export default function LiveMap({
                     {/* Traversed Path: Origin -> Current Location */}
                     <Polyline
                         positions={[startCoords, currentCoords]}
-                        pathOptions={{ color: '#059669', weight: 6, opacity: 0.9 }}
+                        pathOptions={{ color: '#2563eb', weight: 6, opacity: 0.9 }}
                     />
 
                     {/* Remaining Path: Current Location -> Destination */}
@@ -614,7 +614,7 @@ export default function LiveMap({
             {isFullscreen && (
                 <div className="absolute bottom-6 left-4 sm:left-6 right-4 sm:right-6 z-[450] pointer-events-none flex justify-between items-end gap-4">
                     <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800 p-3 sm:p-4 rounded-2xl shadow-2xl pointer-events-auto max-w-md">
-                        <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest block mb-0.5">
+                        <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest block mb-0.5">
                             ● ACTIVE CARGO RADAR
                         </span>
                         <p className="text-white text-xs sm:text-sm font-extrabold truncate">
@@ -628,7 +628,7 @@ export default function LiveMap({
                     </div>
 
                     <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800 px-3.5 py-2 rounded-xl text-slate-300 text-[11px] font-mono font-bold pointer-events-auto hidden sm:flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                        <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
                         <span>GPS SATELLITE UPLINK LIVE</span>
                     </div>
                 </div>

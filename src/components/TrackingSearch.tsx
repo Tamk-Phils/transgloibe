@@ -22,17 +22,17 @@ class MapErrorBoundary extends Component<{ children: ReactNode }, { hasError: bo
         if (this.state.hasError) {
             return (
                 <div className="w-full h-full bg-slate-900 rounded-2xl flex flex-col items-center justify-center text-white gap-3 p-6 text-center border border-slate-800">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-sky-400">
                         <Navigation size={20} className="transform rotate-45" />
                     </div>
                     <div>
-                        <p className="text-sm font-bold text-emerald-400">Satellite Map Telemetry Active</p>
+                        <p className="text-sm font-bold text-sky-400">Satellite Map Telemetry Active</p>
                         <p className="text-xs text-slate-400 mt-1 max-w-sm">Interactive map connection initialized or resetting.</p>
                     </div>
                     <button
                         type="button"
                         onClick={() => this.setState({ hasError: false })}
-                        className="mt-1 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-lg"
+                        className="mt-1 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 cursor-pointer shadow-lg"
                     >
                         <Zap size={13} />
                         <span>Reload Satellite Radar</span>
@@ -48,7 +48,7 @@ const LiveMap = dynamic(() => import("@/components/LiveMap"), {
     ssr: false,
     loading: () => (
         <div className="w-full h-full bg-slate-900 rounded-2xl flex flex-col items-center justify-center text-white gap-3 p-6 text-center">
-            <div className="w-8 h-8 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
             <p className="text-xs text-slate-400 font-mono">INITIALIZING SATELLITE RADAR...</p>
         </div>
     )
@@ -81,9 +81,9 @@ export default function TrackingSearch() {
             origin: "Regional Dispatch Hub",
             destination: "Destination Distribution Center",
             sender_name: "Logistics Fulfillment Center",
-            sender_email: "dispatch@transworldlogistics.org",
+            sender_email: "dispatch@transglobelogistics.org",
             recipient_name: "Consignee On File",
-            recipient_email: "client@transworldlogistics.org",
+            recipient_email: "client@transglobelogistics.org",
             recipient_address: "Delivery Address Verified On File",
             description: "General Cargo - Standard Freight Telemetry Active",
             weight: 15.0,
@@ -158,11 +158,11 @@ export default function TrackingSearch() {
                 // Update local storage cache with genuine Supabase record and wipe any stale simulated data
                 if (typeof window !== "undefined") {
                     try {
-                        const saved = localStorage.getItem("transworldlogistics_shipments");
+                        const saved = localStorage.getItem("transglobelogistics_shipments") || localStorage.getItem("transworldlogistics_shipments");
                         let localShipments: Shipment[] = saved ? JSON.parse(saved) : [];
                         localShipments = localShipments.filter(s => s.tracking_number.toLowerCase() !== cleanQuery.toLowerCase());
                         localShipments.unshift(found);
-                        localStorage.setItem("transworldlogistics_shipments", JSON.stringify(localShipments));
+                        localStorage.setItem("transglobelogistics_shipments", JSON.stringify(localShipments));
                     } catch {}
                 }
             }
@@ -173,7 +173,7 @@ export default function TrackingSearch() {
         // 2. Try LocalStorage
         if (!found && typeof window !== "undefined") {
             try {
-                const saved = localStorage.getItem("transworldlogistics_shipments");
+                const saved = localStorage.getItem("transglobelogistics_shipments") || localStorage.getItem("transworldlogistics_shipments");
                 if (saved) {
                     const localShipments: Shipment[] = JSON.parse(saved);
                     const match = localShipments.find(s =>
@@ -222,8 +222,8 @@ export default function TrackingSearch() {
             {/* Search Input Box - Matching Uploaded Reference Image */}
             <form onSubmit={handleSearchSubmit} className="relative">
                 <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
-                    <div className="relative flex-grow w-full flex items-center px-4 bg-slate-50 border-2 border-slate-300 rounded-lg focus-within:border-emerald-700 focus-within:bg-white transition-all">
-                        <Package size={24} className="text-emerald-700 shrink-0 mr-3" />
+                    <div className="relative flex-grow w-full flex items-center px-4 bg-slate-50 border-2 border-slate-300 rounded-lg focus-within:border-blue-600 focus-within:bg-white transition-all">
+                        <Package size={24} className="text-blue-600 shrink-0 mr-3" />
                         <input
                             type="text"
                             value={trackingNumber}
@@ -239,7 +239,7 @@ export default function TrackingSearch() {
                     <button
                         type="submit"
                         disabled={isSearching}
-                        className="w-full sm:w-auto bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold text-base px-8 py-4 rounded-xl md:rounded-full transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 shrink-0 shadow-lg shadow-emerald-900/25"
+                        className="w-full sm:w-auto bg-blue-600 hover:bg-blue-800 active:bg-blue-900 text-white font-bold text-base px-8 py-4 rounded-xl md:rounded-full transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-2 shrink-0 shadow-lg shadow-blue-900/25"
                     >
                         {isSearching ? (
                             <>
@@ -261,10 +261,10 @@ export default function TrackingSearch() {
                 <div className="flex items-center gap-4">
                     <span className="text-slate-300 font-medium">Popular carriers:</span>
                     <div className="flex items-center gap-5 font-black text-slate-400 tracking-wider">
-                        <span className="hover:text-emerald-700 transition-colors">DHL</span>
-                        <span className="hover:text-emerald-700 transition-colors">FedEx</span>
-                        <span className="hover:text-emerald-700 transition-colors">UPS</span>
-                        <span className="hover:text-emerald-700 transition-colors">Aramex</span>
+                        <span className="hover:text-blue-600 transition-colors">DHL</span>
+                        <span className="hover:text-blue-600 transition-colors">FedEx</span>
+                        <span className="hover:text-blue-600 transition-colors">UPS</span>
+                        <span className="hover:text-blue-600 transition-colors">Aramex</span>
                     </div>
                 </div>
             </div>
@@ -276,11 +276,11 @@ export default function TrackingSearch() {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0 }}
-                        className="mt-6 p-5 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-start gap-4"
+                        className="mt-6 p-5 rounded-2xl bg-blue-50 border border-blue-100 flex items-start gap-4"
                     >
-                        <AlertCircle className="text-emerald-500 shrink-0 mt-0.5" size={20} />
+                        <AlertCircle className="text-blue-500 shrink-0 mt-0.5" size={20} />
                         <div>
-                            <p className="font-bold text-xs text-emerald-600 uppercase tracking-wider">TRACKING ALERT</p>
+                            <p className="font-bold text-xs text-blue-600 uppercase tracking-wider">TRACKING ALERT</p>
                             <p className="text-slate-600 mt-0.5 text-sm">{error}</p>
                         </div>
                     </motion.div>
@@ -297,8 +297,8 @@ export default function TrackingSearch() {
                         <div className="bg-slate-900 p-5 sm:p-8 md:p-10 flex flex-wrap justify-between items-center gap-4 sm:gap-6 text-white">
                             <div className="space-y-1">
                                 <div className="flex items-center gap-2">
-                                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_10px_rgba(225,29,72,0.9)] shrink-0" />
-                                    <p className="text-emerald-400 text-xs font-mono font-bold uppercase tracking-widest">TRANSWORLD LOGISTICS LIVE</p>
+                                    <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_rgba(225,29,72,0.9)] shrink-0" />
+                                    <p className="text-sky-400 text-xs font-mono font-bold uppercase tracking-widest">TRANSGLOBE LOGISTICS LIVE</p>
                                 </div>
                                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
                                     {result.current_status || "IN TRANSIT"}
@@ -311,7 +311,7 @@ export default function TrackingSearch() {
                                     <span className="text-white font-mono font-extrabold text-sm sm:text-base md:text-lg tracking-wider break-all">{result.tracking_number}</span>
                                     <button
                                         onClick={() => handleCopy(result.tracking_number)}
-                                        className={`p-1.5 rounded-lg transition-all shrink-0 ${isCopying ? 'text-emerald-400 bg-emerald-500/20' : 'text-slate-400 hover:text-white hover:bg-white/10'}`}
+                                        className={`p-1.5 rounded-lg transition-all shrink-0 ${isCopying ? 'text-sky-400 bg-blue-500/20' : 'text-slate-400 hover:text-white hover:bg-white/10'}`}
                                         title="Copy Tracking ID"
                                     >
                                         {isCopying ? <Check size={16} /> : <Copy size={16} />}
@@ -322,7 +322,7 @@ export default function TrackingSearch() {
 
                         <div className="p-4 sm:p-8 md:p-12 space-y-8 md:space-y-10">
                             {/* Route Indicator */}
-                            <div className="p-5 md:p-8 rounded-2xl bg-emerald-50/60 border border-emerald-100">
+                            <div className="p-5 md:p-8 rounded-2xl bg-blue-50/60 border border-blue-100">
                                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                                     <div className="text-center md:text-left space-y-1">
                                         <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest">ORIGIN</p>
@@ -330,17 +330,17 @@ export default function TrackingSearch() {
                                     </div>
 
                                     <div className="flex-1 w-full max-w-md space-y-2">
-                                        <div className="h-1.5 bg-emerald-200/60 w-full rounded-full relative overflow-hidden">
+                                        <div className="h-1.5 bg-blue-200/60 w-full rounded-full relative overflow-hidden">
                                             <motion.div 
                                                 initial={{ width: 0 }}
                                                 animate={{ width: "75%" }}
                                                 transition={{ duration: 1.5, ease: "easeOut" }}
-                                                className="h-full bg-emerald-700 rounded-full"
+                                                className="h-full bg-blue-600 rounded-full"
                                             />
                                         </div>
-                                        <div className="flex items-center justify-center gap-2 text-xs font-bold text-emerald-700 text-center">
+                                        <div className="flex items-center justify-center gap-2 text-xs font-bold text-blue-600 text-center">
                                             <Truck size={14} className="animate-pulse shrink-0" />
-                                            <span>En Route via Transworld Logistics Transit Network</span>
+                                            <span>En Route via Transglobe Logistics Transit Network</span>
                                         </div>
                                     </div>
 
@@ -355,7 +355,7 @@ export default function TrackingSearch() {
                             <div className="space-y-4">
                                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-slate-50 p-4 sm:p-5 rounded-2xl border border-slate-200 shadow-sm">
                                     <div className="flex items-center gap-3.5 min-w-0">
-                                        <div className="w-10 h-10 shrink-0 rounded-xl bg-emerald-700 text-white flex items-center justify-center shadow-md">
+                                        <div className="w-10 h-10 shrink-0 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md">
                                             <Globe size={20} className="shrink-0" />
                                         </div>
                                         <div className="min-w-0">
@@ -369,8 +369,8 @@ export default function TrackingSearch() {
                                         onClick={() => setShowMap(!showMap)}
                                         className={`w-full sm:w-auto shrink-0 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-extrabold border transition-all cursor-pointer shadow-sm ${
                                             showMap 
-                                                ? 'bg-emerald-700 text-white border-emerald-700 hover:bg-emerald-800' 
-                                                : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-700 hover:text-emerald-700'
+                                                ? 'bg-blue-600 text-white border-blue-600 hover:bg-blue-800' 
+                                                : 'bg-white text-slate-700 border-slate-200 hover:border-blue-600 hover:text-blue-600'
                                         }`}
                                     >
                                         <MapPin size={15} className="shrink-0" />
@@ -413,31 +413,31 @@ export default function TrackingSearch() {
                                 <div className="lg:col-span-2 space-y-6">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3 min-w-0 overflow-hidden">
-                                            <div className="flex items-center gap-2 text-emerald-700 text-xs font-bold uppercase tracking-wider pb-2 border-b border-slate-200">
+                                            <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider pb-2 border-b border-slate-200">
                                                 <User size={16} className="shrink-0" /> Sender Information
                                             </div>
                                             <p className="text-xs text-slate-400 font-medium">NAME</p>
                                             <p className="text-slate-900 font-bold text-base break-words">{result.sender_name || 'N/A'}</p>
                                             {result.sender_email && (
                                                 <p className="text-slate-500 text-xs flex items-center gap-2 pt-1 min-w-0">
-                                                    <Mail size={13} className="text-emerald-600 shrink-0" />
+                                                    <Mail size={13} className="text-blue-600 shrink-0" />
                                                     <span className="break-all font-medium">{result.sender_email}</span>
                                                 </p>
                                             )}
                                             {result.sender_phone && (
                                                 <p className="text-slate-500 text-xs flex items-center gap-2 pt-0.5 min-w-0">
-                                                    <Phone size={13} className="text-emerald-600 shrink-0" />
+                                                    <Phone size={13} className="text-blue-600 shrink-0" />
                                                     <span className="break-all font-medium">{result.sender_phone}</span>
                                                 </p>
                                             )}
                                             <p className="text-slate-500 text-xs flex items-center gap-2 pt-0.5 min-w-0">
-                                                <MapPin size={13} className="text-emerald-600 shrink-0" />
+                                                <MapPin size={13} className="text-blue-600 shrink-0" />
                                                 <span className="font-semibold text-slate-700">Origin: {result.origin || 'Origin Station'}</span>
                                             </p>
                                         </div>
 
                                         <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3 min-w-0 overflow-hidden">
-                                            <div className="flex items-center gap-2 text-emerald-700 text-xs font-bold uppercase tracking-wider pb-2 border-b border-slate-200">
+                                            <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider pb-2 border-b border-slate-200">
                                                 <MapPin size={16} className="shrink-0" /> Recipient Information
                                             </div>
                                             <p className="text-xs text-slate-400 font-medium">RECIPIENT NAME</p>
@@ -447,18 +447,18 @@ export default function TrackingSearch() {
                                             </p>
                                             {result.recipient_email && (
                                                 <p className="text-slate-500 text-xs flex items-center gap-2 pt-1 min-w-0">
-                                                    <Mail size={13} className="text-emerald-600 shrink-0" />
+                                                    <Mail size={13} className="text-blue-600 shrink-0" />
                                                     <span className="break-all font-medium">{result.recipient_email}</span>
                                                 </p>
                                             )}
                                             {result.recipient_phone && (
                                                 <p className="text-slate-500 text-xs flex items-center gap-2 pt-0.5 min-w-0">
-                                                    <Phone size={13} className="text-emerald-600 shrink-0" />
+                                                    <Phone size={13} className="text-blue-600 shrink-0" />
                                                     <span className="break-all font-medium">{result.recipient_phone}</span>
                                                 </p>
                                             )}
                                             <p className="text-slate-500 text-xs flex items-center gap-2 pt-0.5 min-w-0">
-                                                <MapPin size={13} className="text-emerald-600 shrink-0" />
+                                                <MapPin size={13} className="text-blue-600 shrink-0" />
                                                 <span className="font-semibold text-slate-700">Destination: {result.destination || 'Destination Station'}</span>
                                             </p>
                                         </div>
@@ -466,7 +466,7 @@ export default function TrackingSearch() {
 
                                     <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-3">
                                         <div className="flex items-center gap-2 text-slate-700 text-xs font-bold uppercase tracking-wider">
-                                            <FileText size={15} className="text-emerald-700" /> Package Description & Content
+                                            <FileText size={15} className="text-blue-600" /> Package Description & Content
                                         </div>
                                         <p className="text-slate-800 text-sm font-semibold leading-relaxed whitespace-pre-line">
                                             {result.description || 'Standard high-value express shipment parcel.'}
@@ -484,7 +484,7 @@ export default function TrackingSearch() {
 
                                 <div className="space-y-6">
                                     <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 space-y-4">
-                                        <div className="flex items-center gap-2 text-emerald-700 text-xs font-bold uppercase tracking-wider pb-3 border-b border-slate-200">
+                                        <div className="flex items-center gap-2 text-blue-600 text-xs font-bold uppercase tracking-wider pb-3 border-b border-slate-200">
                                             <Package size={16} /> Cargo Specifications
                                         </div>
                                         <div className="space-y-3 text-xs">
@@ -494,7 +494,7 @@ export default function TrackingSearch() {
                                             </div>
                                             <div className="flex justify-between items-center pb-2 border-b border-slate-200/60">
                                                 <span className="text-slate-500 font-medium">SERVICE TYPE</span>
-                                                <span className="text-emerald-700 font-bold">{result.service_level || result.item_type || 'General Cargo'}</span>
+                                                <span className="text-blue-600 font-bold">{result.service_level || result.item_type || 'General Cargo'}</span>
                                             </div>
                                             {result.carrier && (
                                                 <div className="flex justify-between items-center pb-2 border-b border-slate-200/60">
@@ -522,7 +522,7 @@ export default function TrackingSearch() {
                                             </div>
                                             <div className="flex justify-between items-center">
                                                 <span className="text-slate-500 font-medium">PAYMENT STATUS</span>
-                                                <span className="px-2.5 py-0.5 rounded-md bg-emerald-100 text-emerald-700 font-bold">
+                                                <span className="px-2.5 py-0.5 rounded-md bg-blue-100 text-blue-600 font-bold">
                                                     {result.payment_status || 'PAID'}
                                                 </span>
                                             </div>
@@ -537,7 +537,7 @@ export default function TrackingSearch() {
 
                                     <button 
                                         onClick={() => window.print()} 
-                                        className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
+                                        className="w-full bg-blue-600 hover:bg-blue-800 text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-all cursor-pointer"
                                     >
                                         <Download size={15} /> Download Waybill PDF
                                     </button>
@@ -547,24 +547,24 @@ export default function TrackingSearch() {
                             {/* Tracking History Audit Trail */}
                             <div className="space-y-6 pt-6 border-t border-slate-100">
                                 <h3 className="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-                                    <Clock size={16} className="text-emerald-700" />
+                                    <Clock size={16} className="text-blue-600" />
                                     Tracking Status History
                                 </h3>
 
-                                <div className="space-y-6 pl-4 border-l-2 border-emerald-100 ml-2">
+                                <div className="space-y-6 pl-4 border-l-2 border-blue-100 ml-2">
                                     {result.updates && result.updates.length > 0 ? (
                                         result.updates.map((update: ShipmentUpdate, idx: number) => (
                                             <div key={idx} className="relative pl-6 space-y-1">
-                                                <div className={`absolute -left-[21px] top-1 w-3.5 h-3.5 rounded-full border-2 ${idx === 0 ? 'bg-emerald-700 border-emerald-700 shadow-[0_0_8px_rgba(190,18,60,0.8)]' : 'bg-white border-slate-300'}`} />
+                                                <div className={`absolute -left-[21px] top-1 w-3.5 h-3.5 rounded-full border-2 ${idx === 0 ? 'bg-blue-600 border-blue-600 shadow-[0_0_8px_rgba(190,18,60,0.8)]' : 'bg-white border-slate-300'}`} />
                                                 <div className="flex flex-wrap items-center gap-3">
-                                                    <p className={`font-bold text-sm ${idx === 0 ? 'text-emerald-700' : 'text-slate-800'}`}>{update.status}</p>
+                                                    <p className={`font-bold text-sm ${idx === 0 ? 'text-blue-600' : 'text-slate-800'}`}>{update.status}</p>
                                                     <span className="text-[11px] font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-md">
                                                         {new Date(update.created_at).toLocaleString()}
                                                     </span>
                                                 </div>
                                                 <p className="text-slate-600 text-xs leading-relaxed">{update.description}</p>
                                                 <p className="text-[11px] text-slate-500 flex items-center gap-1 font-medium">
-                                                    <MapPin size={12} className="text-emerald-600" /> Location: {update.location}
+                                                    <MapPin size={12} className="text-blue-600" /> Location: {update.location}
                                                 </p>
                                             </div>
                                         ))
@@ -584,25 +584,25 @@ export default function TrackingSearch() {
                         <div className="border-b-2 border-slate-900 pb-5 mb-6 flex justify-between items-start">
                             <div>
                                 <div className="flex items-center gap-3 mb-1">
-                                    <div className="w-9 h-9 rounded-lg bg-emerald-700 text-white flex items-center justify-center font-black text-lg shadow-sm">
+                                    <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-lg shadow-sm">
                                         T
                                     </div>
                                     <div>
                                         <h1 className="text-2xl font-black tracking-tight text-slate-950 uppercase">
-                                            TRANSWORLD LOGISTICS
+                                            TRANSGLOBE LOGISTICS
                                         </h1>
-                                        <p className="text-[11px] font-bold uppercase tracking-wider text-emerald-800">
+                                        <p className="text-[11px] font-bold uppercase tracking-wider text-blue-800">
                                             Global Freight & Cargo Supply Chain Network
                                         </p>
                                     </div>
                                 </div>
                                 <p className="text-[11px] text-slate-500 mt-2">
-                                    Portal: <span className="font-semibold text-slate-700">transworldlogistics.org</span> • Support: <span className="font-semibold text-slate-700">supportdesk@transworldlogistics.org</span>
+                                    Portal: <span className="font-semibold text-slate-700">transglobelogistics.org</span> • Support: <span className="font-semibold text-slate-700">info@transglobelogistics.org</span>
                                 </p>
                             </div>
 
                             <div className="text-right">
-                                <span className="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-black uppercase tracking-wider rounded border border-emerald-300">
+                                <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-xs font-black uppercase tracking-wider rounded border border-sky-300">
                                     Official Consignment Note
                                 </span>
                                 <p className="text-xs font-mono font-bold text-slate-800 mt-1.5">
@@ -629,7 +629,7 @@ export default function TrackingSearch() {
                                 <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest block">
                                     CURRENT DISPATCH STATUS
                                 </span>
-                                <span className="inline-block px-3.5 py-1 bg-emerald-700 text-white text-xs font-black uppercase tracking-wider rounded-md">
+                                <span className="inline-block px-3.5 py-1 bg-blue-600 text-white text-xs font-black uppercase tracking-wider rounded-md">
                                     {result.current_status || 'IN TRANSIT'}
                                 </span>
                             </div>
@@ -650,7 +650,7 @@ export default function TrackingSearch() {
                         {/* Sender & Consignee Grid */}
                         <div className="grid grid-cols-2 gap-6 mb-6">
                             <div className="border border-slate-200 rounded-xl p-4 bg-white">
-                                <h3 className="text-xs font-black uppercase tracking-wider text-emerald-800 border-b border-slate-200 pb-2 mb-3">
+                                <h3 className="text-xs font-black uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-2 mb-3">
                                     1. Shipper / Sender Details
                                 </h3>
                                 <div className="space-y-2 text-xs">
@@ -670,7 +670,7 @@ export default function TrackingSearch() {
                             </div>
 
                             <div className="border border-slate-200 rounded-xl p-4 bg-white">
-                                <h3 className="text-xs font-black uppercase tracking-wider text-emerald-800 border-b border-slate-200 pb-2 mb-3">
+                                <h3 className="text-xs font-black uppercase tracking-wider text-blue-800 border-b border-slate-200 pb-2 mb-3">
                                     2. Consignee / Recipient Details
                                 </h3>
                                 <div className="space-y-2 text-xs">
@@ -707,7 +707,7 @@ export default function TrackingSearch() {
                                     </tr>
                                     <tr>
                                         <td className="px-4 py-2.5 font-bold text-slate-500 bg-slate-50/50">SERVICE CLASS</td>
-                                        <td className="px-4 py-2.5 font-bold text-emerald-800">{result.item_type || 'EXPRESS AIR FREIGHT'}</td>
+                                        <td className="px-4 py-2.5 font-bold text-blue-800">{result.item_type || 'EXPRESS AIR FREIGHT'}</td>
                                     </tr>
                                     <tr>
                                         <td className="px-4 py-2.5 font-bold text-slate-500 bg-slate-50/50">PAYMENT STATUS</td>
@@ -763,12 +763,12 @@ export default function TrackingSearch() {
                         {/* Official Seal, Authentication & Signature */}
                         <div className="border-t-2 border-slate-900 pt-6 mt-6 flex justify-between items-end">
                             <div className="space-y-1 max-w-md">
-                                <div className="flex items-center gap-2 text-emerald-800 font-bold text-xs">
+                                <div className="flex items-center gap-2 text-blue-800 font-bold text-xs">
                                     <ShieldCheck size={16} />
                                     <span>OFFICIALLY VERIFIED DISPATCH RECORD</span>
                                 </div>
                                 <p className="text-[10px] text-slate-500 leading-tight">
-                                    This document certifies international carriage registration under Transworld Logistics Operating Conditions. Issued electronically from verified secure gateway.
+                                    This document certifies international carriage registration under Transglobe Logistics Operating Conditions. Issued electronically from verified secure gateway.
                                 </p>
                             </div>
 
@@ -777,7 +777,7 @@ export default function TrackingSearch() {
                                     Authorized Dispatch Control
                                 </div>
                                 <p className="text-[10px] uppercase font-bold text-slate-400">
-                                    Transworld Global Operations
+                                    Transglobe Global Operations
                                 </p>
                             </div>
                         </div>

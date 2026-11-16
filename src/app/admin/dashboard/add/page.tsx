@@ -34,7 +34,7 @@ export default function AddShipment() {
         weight: "15",
         dimensions: "12x12x12",
         service_level: "Priority Air Express",
-        carrier: "Transworld Logistics Air Express Fleet",
+        carrier: "Transglobe Logistics Air Express Fleet",
         declared_value: "150.00",
         quantity: "1",
         current_status: "Pending",
@@ -104,19 +104,19 @@ export default function AddShipment() {
             }
 
             // Always ensure local cache storage copy exists and remove any older/simulated copy
-            const existingRaw = localStorage.getItem("transworldlogistics_shipments");
+            const existingRaw = localStorage.getItem("transglobelogistics_shipments");
             let existing: any[] = existingRaw ? JSON.parse(existingRaw) : [];
             existing = existing.filter(s => s.tracking_number.toLowerCase() !== formData.tracking_number.toLowerCase());
             existing.unshift({ ...newShipment, id: Math.random().toString(36).substr(2, 9) });
-            localStorage.setItem("transworldlogistics_shipments", JSON.stringify(existing));
+            localStorage.setItem("transglobelogistics_shipments", JSON.stringify(existing));
 
             if (formData.recipient_email) {
                 try {
                     await notifyShipmentCreated({
                         to: formData.recipient_email,
-                        subject: `Transworld Logistics: Package ${formData.tracking_number} Registered`,
+                        subject: `Transglobe Logistics: Package ${formData.tracking_number} Registered`,
                         trackingNumber: formData.tracking_number,
-                        senderName: formData.sender_name || 'Transworld Logistics Admin',
+                        senderName: formData.sender_name || 'Transglobe Logistics Admin',
                         recipientName: formData.recipient_name || 'Recipient',
                         origin: formData.origin || 'Source Hub',
                         destination: formData.destination || 'Destination Hub'
@@ -130,10 +130,10 @@ export default function AddShipment() {
         } catch (err: any) {
             console.error("Shipment Registration Error:", err);
             // Fallback save to ensure administrative workflow is uninterrupted
-            const existingRaw = localStorage.getItem("transworldlogistics_shipments") || localStorage.getItem("transworldlogistics_shipments");
+            const existingRaw = localStorage.getItem("transglobelogistics_shipments") || localStorage.getItem("transglobelogistics_shipments");
             const existing: any[] = existingRaw ? JSON.parse(existingRaw) : [];
             existing.push({ ...newShipment, id: Math.random().toString(36).substr(2, 9) });
-            localStorage.setItem("transworldlogistics_shipments", JSON.stringify(existing));
+            localStorage.setItem("transglobelogistics_shipments", JSON.stringify(existing));
             router.push("/admin/dashboard/shipments");
         } finally {
             setIsSaving(false);
@@ -155,7 +155,7 @@ export default function AddShipment() {
             </div>
 
             {error && (
-                <div className="bg-teal-50 border border-teal-200 p-6 rounded-2xl flex items-center gap-4 text-teal-600 animate-in fade-in slide-in-from-top-4">
+                <div className="bg-cyan-50 border border-cyan-200 p-6 rounded-2xl flex items-center gap-4 text-cyan-600 animate-in fade-in slide-in-from-top-4">
                     <AlertCircle size={24} />
                     <p className="font-bold text-sm">Error: {error}</p>
                 </div>
@@ -228,7 +228,7 @@ export default function AddShipment() {
                                 <label className="text-xs font-bold text-slate-700 uppercase tracking-wider ml-1">Carrier Transport</label>
                                 <input
                                     type="text"
-                                    placeholder="e.g. Transworld Logistics Fleet Air"
+                                    placeholder="e.g. Transglobe Logistics Fleet Air"
                                     className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 px-4 focus:border-primary font-bold text-xs text-slate-900 outline-none"
                                     value={formData.carrier}
                                     onChange={(e) => setFormData({ ...formData, carrier: e.target.value })}
@@ -320,7 +320,7 @@ export default function AddShipment() {
                                         <input
                                             type="email"
                                             required
-                                            placeholder="admin@transworldlogistics.org"
+                                            placeholder="admin@transglobelogistics.org"
                                             className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 focus:border-primary font-bold text-xs text-slate-900 outline-none"
                                             value={formData.sender_email}
                                             onChange={(e) => setFormData({ ...formData, sender_email: e.target.value })}
@@ -535,7 +535,7 @@ export default function AddShipment() {
                     </div>
 
                     <div className="pt-10 border-t border-slate-100 flex items-center justify-end gap-6 relative z-10">
-                        <Link href="/admin/dashboard/shipments" className="text-xs font-bold text-slate-500 hover:text-teal-500 transition-colors uppercase tracking-wider">Cancel</Link>
+                        <Link href="/admin/dashboard/shipments" className="text-xs font-bold text-slate-500 hover:text-cyan-500 transition-colors uppercase tracking-wider">Cancel</Link>
                         <button
                             type="submit"
                             disabled={isSaving}

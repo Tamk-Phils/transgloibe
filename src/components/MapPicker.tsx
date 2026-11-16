@@ -91,7 +91,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
         try {
             const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=14&addressdetails=1`, {
                 headers: {
-                    'User-Agent': 'TransworldLogisticsApp/1.0'
+                    'User-Agent': 'TransglobeLogisticsApp/1.0'
                 }
             });
             const data = await res.json();
@@ -115,7 +115,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
         try {
             const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=1`, {
                 headers: {
-                    'User-Agent': 'TransworldLogisticsApp/1.0'
+                    'User-Agent': 'TransglobeLogisticsApp/1.0'
                 }
             });
             const data = await res.json();
@@ -204,7 +204,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
             {/* Fullscreen Header */}
             <div className="bg-slate-900 border-b border-slate-800 p-4 sm:px-6 flex flex-col md:flex-row md:items-center justify-between gap-4 text-white shrink-0 shadow-2xl z-[1000]">
                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-emerald-600/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                    <div className="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-sky-400 shrink-0">
                         <Navigation size={20} className="transform rotate-45 animate-pulse" />
                     </div>
                     <div>
@@ -219,14 +219,14 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                 <form onSubmit={handleSearchSubmit} className="relative flex-1 max-w-md">
                     <input
                         type="text"
-                        className="w-full bg-slate-800 border border-slate-700 rounded-xl py-2.5 px-4 pl-10 pr-10 font-bold text-white text-xs focus:outline-none focus:border-emerald-500 transition-all outline-none"
+                        className="w-full bg-slate-800 border border-slate-700 rounded-xl py-2.5 px-4 pl-10 pr-10 font-bold text-white text-xs focus:outline-none focus:border-blue-500 transition-all outline-none"
                         placeholder="Search address, airport, or city..."
                         value={address}
                         onChange={handleAddressChange}
                     />
                     <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                     {isSearching ? (
-                        <Loader2 className="absolute right-3.5 top-1/2 -translate-y-1/2 text-emerald-400 animate-spin" size={16} />
+                        <Loader2 className="absolute right-3.5 top-1/2 -translate-y-1/2 text-sky-400 animate-spin" size={16} />
                     ) : (
                         <button type="submit" className="absolute right-2.5 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-white transition-colors cursor-pointer">
                             <Search size={15} />
@@ -239,7 +239,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                     <button
                         type="button"
                         onClick={() => setIsFullscreen(false)}
-                        className="bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg transition-all cursor-pointer"
+                        className="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2 shadow-lg transition-all cursor-pointer"
                     >
                         <Check size={16} /> Done & Apply Location
                     </button>
@@ -261,7 +261,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                 {/* Floating Bottom HUD */}
                 <div className="absolute bottom-6 left-6 right-6 z-[450] pointer-events-none flex justify-between items-end gap-4">
                     <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800 p-4 rounded-2xl shadow-2xl pointer-events-auto max-w-lg">
-                        <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest block mb-0.5">
+                        <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest block mb-0.5">
                             SELECTED GPS COORDINATES
                         </span>
                         <p className="text-white text-sm font-extrabold truncate">
@@ -275,7 +275,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                     </div>
 
                     <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800 px-4 py-2 rounded-xl text-slate-300 text-xs font-mono font-bold pointer-events-auto hidden sm:flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                        <span className="w-2 h-2 rounded-full bg-blue-500 animate-ping" />
                         <span>CLICK MAP TO REPOSITION PIN</span>
                     </div>
                 </div>
@@ -289,7 +289,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                 <div className="flex justify-between items-center">
                     <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">Search or Click Map Location</label>
                     <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full flex items-center gap-1">
+                        <span className="text-[10px] font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full flex items-center gap-1">
                             <Navigation size={12} /> Click map to set pin
                         </span>
                         <button
@@ -307,16 +307,16 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                 <form onSubmit={handleSearchSubmit} className="relative">
                     <input
                         type="text"
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 px-4 pl-11 pr-11 font-bold text-slate-900 text-xs focus:outline-none focus:border-emerald-600 transition-all outline-none"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 px-4 pl-11 pr-11 font-bold text-slate-900 text-xs focus:outline-none focus:border-blue-600 transition-all outline-none"
                         placeholder="Search address or city (e.g. Dallas, TX or Heathrow)"
                         value={address}
                         onChange={handleAddressChange}
                     />
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                     {isSearching ? (
-                        <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 text-emerald-600 animate-spin" size={18} />
+                        <Loader2 className="absolute right-4 top-1/2 -translate-y-1/2 text-blue-600 animate-spin" size={18} />
                     ) : (
-                        <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-emerald-600 transition-colors cursor-pointer">
+                        <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-slate-400 hover:text-blue-600 transition-colors cursor-pointer">
                             <Search size={16} />
                         </button>
                     )}
@@ -327,7 +327,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
             <div className="h-[380px] w-full rounded-2xl overflow-hidden border border-slate-200 shadow-md relative z-0">
                 {isFullscreen ? (
                     <div className="w-full h-full bg-slate-900 rounded-2xl flex flex-col items-center justify-center text-white gap-3 p-6 text-center">
-                        <Navigation size={24} className="text-emerald-400 animate-pulse" />
+                        <Navigation size={24} className="text-sky-400 animate-pulse" />
                         <div>
                             <h4 className="font-extrabold text-sm">Picker Active in Fullscreen</h4>
                             <p className="text-xs text-slate-400 mt-1">Press ESC or click below to return</p>
@@ -335,7 +335,7 @@ export default function MapPicker({ onChange, initialLat, initialLng, initialAdd
                         <button
                             type="button"
                             onClick={() => setIsFullscreen(false)}
-                            className="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-lg transition-all cursor-pointer"
+                            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 shadow-lg transition-all cursor-pointer"
                         >
                             <Minimize2 size={14} />
                             <span>Return to Form</span>

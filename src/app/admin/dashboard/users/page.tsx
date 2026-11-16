@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function UserManagement() {
     const [users, setUsers] = useState([
-        { id: 1, name: "COMMAND ADMIN", email: "ADMIN@TRANSWORLD LOGISTICSSHIPPING.COM", role: "SUPER USER", status: "ACTIVE", lastLogin: "2 MINS AGO" },
+        { id: 1, name: "COMMAND ADMIN", email: "ADMIN@TRANSGLOBE LOGISTICSSHIPPING.COM", role: "SUPER USER", status: "ACTIVE", lastLogin: "2 MINS AGO" },
         { id: 2, name: "SARAH JENKINS", email: "S.JENKINS@SWIFT.IO", role: "OPERATOR", status: "ACTIVE", lastLogin: "1 HOUR AGO" },
         { id: 3, name: "ROBERT CHEN", email: "R.CHEN@GLOBALPORT.IO", role: "MANAGER", status: "OFFLINE", lastLogin: "3 DAYS AGO" },
         { id: 4, name: "MICHAEL TORRES", email: "M.TORRES@APEX.IO", role: "OPERATOR", status: "ACTIVE", lastLogin: "5 HOURS AGO" },
@@ -94,8 +94,8 @@ export default function UserManagement() {
                                     </td>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-2">
-                                            <div className={`w-2 h-2 rounded-full ${user.status === 'ACTIVE' ? 'bg-emerald-500 animate-pulse' : 'bg-slate-300'}`} />
-                                            <span className={`text-xs font-bold uppercase tracking-wider ${user.status === 'ACTIVE' ? 'text-emerald-700' : 'text-slate-400'}`}>{user.status}</span>
+                                            <div className={`w-2 h-2 rounded-full ${user.status === 'ACTIVE' ? 'bg-blue-500 animate-pulse' : 'bg-slate-300'}`} />
+                                            <span className={`text-xs font-bold uppercase tracking-wider ${user.status === 'ACTIVE' ? 'text-blue-600' : 'text-slate-400'}`}>{user.status}</span>
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 text-xs font-medium text-slate-500">

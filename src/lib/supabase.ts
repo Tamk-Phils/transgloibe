@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Known active Supabase project credentials for Transworld Logistics
+// Known active Supabase project credentials for Transglobe Logistics
 const ACTIVE_SUPABASE_URL = 'https://ktpmsqliiokkthqlemmm.supabase.co';
 const ACTIVE_SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0cG1zcWxpaW9ra3RocWxlbW1tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU1MTEyMzYsImV4cCI6MjEwMTA4NzIzNn0.ZQosm0kydwU2q-ms-FhhUA6Au38fSTJBFj6PkhGgO3g';
 

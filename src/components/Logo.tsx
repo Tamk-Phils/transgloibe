@@ -11,12 +11,12 @@ export default function Logo({ className = "w-10 h-10" }: { className?: string }
             <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#059669" />
-                        <stop offset="100%" stopColor="#0d9488" />
+                        <stop offset="0%" stopColor="#2563eb" />
+                        <stop offset="100%" stopColor="#0284c7" />
                     </linearGradient>
                     <linearGradient id="logoGradient2" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#0d9488" />
-                        <stop offset="100%" stopColor="#14b8a6" />
+                        <stop offset="0%" stopColor="#0284c7" />
+                        <stop offset="100%" stopColor="#06b6d4" />
                     </linearGradient>
                 </defs>
                 
@@ -33,7 +33,7 @@ export default function Logo({ className = "w-10 h-10" }: { className?: string }
                 {/* Rotating dashed ring */}
                 <motion.circle 
                     cx="50" cy="50" r="35" 
-                    stroke="#059669" 
+                    stroke="#2563eb" 
                     strokeWidth="0.5"
                     strokeDasharray="4 8"
                     animate={{ rotate: 360 }}
@@ -66,14 +66,14 @@ export default function Logo({ className = "w-10 h-10" }: { className?: string }
                 {/* Pulsing center dot */}
                 <motion.circle 
                     cx="50" cy="58" r="3" 
-                    fill="#14b8a6"
+                    fill="#06b6d4"
                     animate={{ opacity: [0.4, 1, 0.4] }}
                     transition={{ duration: 2, repeat: Infinity }}
                 />
 
                 {/* Speed lines */}
-                <line x1="22" y1="54" x2="14" y2="54" stroke="#0d9488" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
-                <line x1="22" y1="58" x2="12" y2="58" stroke="#0d9488" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
+                <line x1="22" y1="54" x2="14" y2="54" stroke="#0284c7" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+                <line x1="22" y1="58" x2="12" y2="58" stroke="#0284c7" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
             </svg>
         </motion.div>
     );

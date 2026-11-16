@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
 import BackToTop from "@/components/BackToTop";
 import NavigationLoader from "@/components/NavigationLoader";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -15,34 +16,34 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Transworld Logistics | Global Freight & Package Tracking",
-    template: "%s | Transworld Logistics"
+    default: "Transglobe Logistics | Global Freight & Package Tracking",
+    template: "%s | Transglobe Logistics"
   },
-  description: "Global logistics, express air transit, ocean freight, and real-time package tracking. Fast, secure delivery with Transworld Logistics.",
-  keywords: ["package tracking", "transworldlogistics shipping", "transworldlogistics", "shipping company", "express delivery", "global freight", "cargo tracking"],
-  authors: [{ name: "Transworld Logistics Team" }],
-  creator: "Transworld Logistics",
-  publisher: "Transworld Logistics",
+  description: "Global logistics, express air transit, ocean freight, and real-time package tracking. Fast, secure delivery with Transglobe Logistics.",
+  keywords: ["package tracking", "transglobelogistics shipping", "transglobelogistics", "shipping company", "express delivery", "global freight", "cargo tracking"],
+  authors: [{ name: "Transglobe Logistics Team" }],
+  creator: "Transglobe Logistics",
+  publisher: "Transglobe Logistics",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://transworldlogistics.org"),
+  metadataBase: new URL("https://transglobelogistics.org"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Transworld Logistics | Global Freight & Package Tracking",
-    description: "Global logistics, express air transit, ocean freight, and real-time package tracking. Fast, secure delivery with Transworld Logistics.",
-    url: "https://transworldlogistics.org",
-    siteName: "Transworld Logistics",
+    title: "Transglobe Logistics | Global Freight & Package Tracking",
+    description: "Global logistics, express air transit, ocean freight, and real-time package tracking. Fast, secure delivery with Transglobe Logistics.",
+    url: "https://transglobelogistics.org",
+    siteName: "Transglobe Logistics",
     images: [
       {
         url: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200",
         width: 1200,
         height: 630,
-        alt: "Transworld Logistics",
+        alt: "Transglobe Logistics",
       },
     ],
     locale: "en_US",
@@ -50,8 +51,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Transworld Logistics | Global Freight & Package Tracking",
-    description: "Global logistics, express air transit, ocean freight, and real-time package tracking with Transworld Logistics.",
+    title: "Transglobe Logistics | Global Freight & Package Tracking",
+    description: "Global logistics, express air transit, ocean freight, and real-time package tracking with Transglobe Logistics.",
     images: ["https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1200"],
   },
   robots: {
@@ -75,13 +76,13 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LogisticsService",
-  "name": "Transworld Logistics",
-  "url": "https://transworldlogistics.org",
-  "logo": "https://transworldlogistics.org/favicon.ico",
+  "name": "Transglobe Logistics",
+  "url": "https://transglobelogistics.org",
+  "logo": "https://transglobelogistics.org/favicon.ico",
   "description": "Global freight forwarding, air transit, and real-time package tracking portal.",
-  "email": "supportdesk@transworldlogistics.org",
+  "email": "info@transglobelogistics.org",
   "sameAs": [
-    "https://transworldlogistics.org"
+    "https://transglobelogistics.org"
   ],
   "areaServed": "Worldwide"
 };
@@ -108,6 +109,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <ChatWidget />
+          <WhatsAppWidget />
           <BackToTop />
         </div>
       </body>

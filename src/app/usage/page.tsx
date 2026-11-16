@@ -77,7 +77,7 @@ export default function UsagePage() {
             {/* Header Banner */}
             <div className="bg-slate-900 text-white py-16 mb-16 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6 relative z-10 text-center space-y-4">
-                    <span className="text-xs font-black uppercase tracking-widest text-emerald-400">MULTIFACETED SERVICE PORTFOLIO</span>
+                    <span className="text-xs font-black uppercase tracking-widest text-sky-400">MULTIFACETED SERVICE PORTFOLIO</span>
                     <h1 className="text-4xl md:text-6xl font-black tracking-tight">Our Services</h1>
                     <p className="text-slate-300 text-base md:text-lg max-w-3xl mx-auto font-medium">
                         Comprehensive shipping & logistics solutions tailored to simplify your supply chain needs across air, land, ocean, rail, and warehousing.
@@ -100,20 +100,20 @@ export default function UsagePage() {
                                         alt={service.title}
                                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                     />
-                                    <div className="absolute top-4 left-4 w-12 h-12 bg-white/95 rounded-2xl flex items-center justify-center text-emerald-700 shadow-md backdrop-blur-md">
+                                    <div className="absolute top-4 left-4 w-12 h-12 bg-white/95 rounded-2xl flex items-center justify-center text-blue-600 shadow-md backdrop-blur-md">
                                         <service.icon size={24} />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <h3 className="text-2xl font-black text-slate-900 group-hover:text-emerald-700 transition-colors">{service.title}</h3>
+                                    <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">{service.title}</h3>
                                     <p className="text-slate-600 text-xs md:text-sm font-medium leading-relaxed">{service.desc}</p>
                                 </div>
 
                                 <ul className="space-y-2 pt-2 border-t border-slate-100">
                                     {service.features.map((feat, idx) => (
                                         <li key={idx} className="flex items-center gap-2.5 text-xs font-bold text-slate-700">
-                                            <Check size={14} className="text-emerald-700 shrink-0" />
+                                            <Check size={14} className="text-blue-600 shrink-0" />
                                             <span>{feat}</span>
                                         </li>
                                     ))}
@@ -121,10 +121,10 @@ export default function UsagePage() {
                             </div>
 
                             <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                                <Link href="/quote" className="inline-flex items-center gap-2 text-white bg-emerald-700 hover:bg-emerald-800 font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all">
+                                <Link href="/quote" className="inline-flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-800 font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition-all">
                                     Get Quote for {service.title} <ArrowRight size={14} />
                                 </Link>
-                                <Link href="/tracking" className="text-xs font-extrabold text-emerald-700 hover:underline">
+                                <Link href="/tracking" className="text-xs font-extrabold text-blue-600 hover:underline">
                                     Track Freight
                                 </Link>
                             </div>

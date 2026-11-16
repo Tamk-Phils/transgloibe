@@ -57,20 +57,20 @@ function LoaderContent() {
   return (
     <div className="fixed top-0 left-0 right-0 z-[99999] pointer-events-none">
       {/* Top Loading Progress Line */}
-      <div className="w-full h-1.5 bg-emerald-100 overflow-hidden relative shadow-sm">
-        <div className="h-full bg-gradient-to-r from-emerald-700 via-teal-500 to-emerald-700 animate-pulse w-full" />
+      <div className="w-full h-1.5 bg-blue-100 overflow-hidden relative shadow-sm">
+        <div className="h-full bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 animate-pulse w-full" />
       </div>
 
       {/* Non-intrusive Top-Right Floating Loading Spinner Toast (NO SCREEN OVERLAY) */}
       <div className="fixed top-24 right-6 z-[99999] pointer-events-none animate-in slide-in-from-top-2 fade-in duration-200">
         <div className="bg-white/95 px-5 py-3.5 rounded-2xl shadow-xl border border-slate-200 flex items-center gap-3.5 text-slate-800">
           <div className="relative flex items-center justify-center">
-            <div className="w-7 h-7 rounded-full border-2 border-emerald-100 border-t-emerald-700 animate-spin" />
-            <Navigation size={12} className="text-emerald-700 absolute transform rotate-45" />
+            <div className="w-7 h-7 rounded-full border-2 border-blue-100 border-t-blue-600 animate-spin" />
+            <Navigation size={12} className="text-blue-600 absolute transform rotate-45" />
           </div>
           <div>
-            <p className="font-extrabold text-xs text-slate-900 tracking-tight">Transworld Logistics</p>
-            <p className="text-[10px] text-emerald-700 font-bold uppercase tracking-wider animate-pulse">Loading...</p>
+            <p className="font-extrabold text-xs text-slate-900 tracking-tight">Transglobe Logistics</p>
+            <p className="text-[10px] text-blue-600 font-bold uppercase tracking-wider animate-pulse">Loading...</p>
           </div>
         </div>
       </div>

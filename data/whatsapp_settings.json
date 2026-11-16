@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "phoneNumber": "+1 (555) 019-2834",
+  "displayLabel": "Direct WhatsApp Dispatch",
+  "message": "Hello Transglobe Logistics, I need cargo tracking assistance.",
+  "showFloating": true,
+  "showHeader": true,
+  "showContactPage": true,
+  "showFooter": true,
+  "updatedAt": "2026-11-16T20:39:58.106Z"
+}

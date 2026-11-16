@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { LayoutDashboard, Package, PlusCircle, LogOut, ArrowLeft, Menu, X, LucideIcon, MessageSquare, Users as UserProfileIcon, BarChart3 as BarChartIcon, Settings as SettingsIcon, AlertTriangle as AlertTriangleIcon, Radar, Activity } from "lucide-react";
+import { LayoutDashboard, Package, PlusCircle, LogOut, ArrowLeft, Menu, X, LucideIcon, MessageSquare, Users as UserProfileIcon, BarChart3 as BarChartIcon, Settings as SettingsIcon, AlertTriangle as AlertTriangleIcon, Radar, Activity, PhoneCall } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
@@ -31,7 +31,7 @@ const SidebarContent = ({
                     <Radar size={20} className="animate-pulse" />
                 </div>
                 <div className="flex flex-col">
-                    <span className="text-sm font-black tracking-tighter text-slate-900 uppercase">Transworld Logistics Admin</span>
+                    <span className="text-sm font-black tracking-tighter text-slate-900 uppercase">Transglobe Logistics Admin</span>
                     <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Management Portal</span>
                 </div>
             </div>
@@ -79,7 +79,7 @@ const SidebarContent = ({
                     setIsSidebarOpen(false);
                     router.push("/admin");
                 }}
-                className="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-teal-500 hover:bg-teal-50 transition-all text-xs font-bold uppercase tracking-wider border border-transparent"
+                className="w-full flex items-center gap-3.5 px-4 py-3 rounded-xl text-cyan-500 hover:bg-cyan-50 transition-all text-xs font-bold uppercase tracking-wider border border-transparent"
             >
                 <LogOut size={18} />
                 Log Out
@@ -105,6 +105,7 @@ export default function AdminLayout({
         { label: "Admin Users", icon: UserProfileIcon, href: "/admin/dashboard/users" },
         { label: "Reports", icon: BarChartIcon, href: "/admin/dashboard/reports" },
         { label: "Alerts", icon: AlertTriangleIcon, href: "/admin/dashboard/alerts" },
+        { label: "WhatsApp Contact", icon: PhoneCall, href: "/admin/dashboard/settings?tab=whatsapp" },
         { label: "Settings", icon: SettingsIcon, href: "/admin/dashboard/settings" },
     ];
 
